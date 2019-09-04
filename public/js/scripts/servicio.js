@@ -1,7 +1,7 @@
 var table;
 var id=0;
 
-var title_modal_data = "Agregar Institucion";
+var title_modal_data = "Registrar Servicio";
 $(document).ready(function(){
     $.ajaxSetup({
         headers: {
@@ -24,13 +24,14 @@ function ListDatatable()
             "url": "/js/assets/Spanish.json"
         },
         ajax: {
-            url: 'institutional_dt'
+            url: 'servicio_dt'
             
         },
         columns: [
             { data: 'user.name'},
-            { data: 'mision'},
-            { data: 'vision'},
+            { data: 'razon_social'},
+            { data: 'servicio'},
+            { data: 'Imagen',   orderable: false, searchable: false },
             { data: 'direccion'},
             { data: 'telefono'},
             { data: 'web'},
@@ -101,23 +102,23 @@ function ListDatatable()
 // guarda los datos nuevos
 function Save() {
     $.ajax({
-        url: "institutional",
+        url: "servicio",
         method: 'post',
         data: catch_parameters(),
         success: function (result) {
             if (result.success) {
                 toastr.success(result.msg);
-
             } else {
                 toastr.warning(result.msg);
             }
+            table.ajax.reload();
         },
         error: function (result) {
             console.log(result.responseJSON.message);
             toastr.error("CONTACTE A SU PROVEEDOR POR FAVOR.");
         },
     });
-    table.ajax.reload();
+    
 }
 
 
@@ -125,7 +126,7 @@ function Save() {
 // captura los datos
 function Edit(id) {
     $.ajax({
-        url: "institutional/{institutional}/edit",
+        url: "servicio/{servicio}/edit",
         method: 'get',
         data: {
             id: id
@@ -146,15 +147,18 @@ function Edit(id) {
 var data_old;
 function show_data(obj) {
     ClearInputs();
+    //console.log(obj)
     obj = JSON.parse(obj);
     id= obj.id;
-    $("#mision").val(obj.mision);
-    $("#vision").val(obj.vision);
+    $("#razon_social").val(obj.razon_social);
+    $("#servicio").val(obj.servicio);
     $("#direccion").val(obj.direccion);
     $("#telefono").val(obj.telefono);
-    $("#web").val(obj.web);
-    $("#email").val(obj.email);
     $("#contacto").val(obj.contacto);
+    $('#image').attr('src', obj.logo);
+    $('#label_image').html(obj.logo);
+    $("#web").val(obj.web);
+    $("#email").val(obj.email);    
     if (obj.estado == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
     }
@@ -163,25 +167,26 @@ function show_data(obj) {
     }
     $("#title-modal").html("Editar Registro");
 
-    data_old = $(".form-data").serialize();
+    data_old = catch_parameters();
 
     $('#modal_datos').modal('show');
 };
 
 // actualiza los datos
 function Update() {
-    var data_new = $(".form-data").serialize();
+    var data_new = catch_parameters();
     if (data_old != data_new) {
         $.ajax({
-            url: "institutional/{institutional}",
+            url: "servicio/{servicio}",
             method: 'put',
             data: catch_parameters(),
             success: function (result) {
                 if (result.success) {
                     toastr.success(result.msg);
-    
+                    table.ajax.reload();        
                 } else {
                     toastr.warning(result.msg);
+                    table.ajax.reload();
                 }
             },
             error: function (result) {
@@ -189,8 +194,7 @@ function Update() {
                 toastr.error("CONTACTE A SU PROVEEDOR POR FAVOR.");
             },
         });
-        table.ajax.reload();
-        
+
     }
 }
 
@@ -201,17 +205,18 @@ function Delete(id_) {
 }
 $("#btn_delete").click(function () {
     $.ajax({
-        url: "institutional/{institutional}",
+        url: "servicio/{servicio}",
         method: 'delete',
         data: {
             id: id
         },
         success: function (result) {
             if (result.success) {
-                toastr.success(result.msg,{"progressBar": true,"closeButton": true});
+                toastr.success(result.msg,{"progressBar": true,"closeButton": true});                
             } else {
                 toastr.warning(result.msg);
             }
+            table.ajax.reload();
         },
         error: function (result) {
             toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
@@ -219,7 +224,6 @@ $("#btn_delete").click(function () {
         },
 
     });
-    table.ajax.reload();
     $('#modal_eliminar').modal('hide');
 });
 
@@ -241,14 +245,14 @@ function catch_parameters()
     var data = $(".form-data").serialize();
     data += "&user_id="+user_id;
     data += "&id="+id;
+    data += "&extension_image=" + extension_image;
+    data +="&image=" + reader.result;
     //console.log(data);
     return data;
-    
 }
 
 // muestra el modal
 $("#btn-agregar").click(function () {
-    console.log("arrived");
     ClearInputs();
     $("#title-modal").html(title_modal_data);
     $("#modal_datos").modal("show");
@@ -289,5 +293,30 @@ function ClearInputs() {
     });
     //__Clean values of inputs
     $("#form-data")[0].reset();
+    $('#image').attr('src', '');
+    $('#label_image').html("Elegir archivo");
     id=0;
 };
+
+
+
+
+//Metodos para imagen
+var reader = new FileReader();
+var extension_image = "";
+$("#logo").change(function (e) {
+    ImgPreview(this);
+    $fileName = e.target.files[0].name;
+    extension_image = $fileName.replace(/^.*\./, '');
+    $('#label_image').html($fileName);
+    //console.log(extension_image);
+});
+function ImgPreview(input) {
+    if (input.files && input.files[0]) {
+        reader.onload = function (e) {
+            //console.log(e);
+            $('#image').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}

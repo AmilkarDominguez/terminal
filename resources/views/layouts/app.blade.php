@@ -56,10 +56,8 @@
                                     <i class="icon-docs"></i>Contenido
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
-                                    <a class="dropdown-item" href="{{ route('auspice.index') }}">Auspiciadores</a>    
-                                    <a class="dropdown-item" href="{{ route('presenter.index') }}">Presentadores</a>
-                                    <a class="dropdown-item" href="{{ route('aviso.index') }}">Avisos</a>
-                                    <a class="dropdown-item" href="{{ route('programa.index') }}">Programas</a>
+                                    <a class="dropdown-item" href="{{ route('servicio.index') }}">Servicio</a>
+                                    <a class="dropdown-item" href="{{ route('targeta_operaciones.index') }}">Targeta de Operaciones</a>
                                 </div>
                             </li>
                            
@@ -69,6 +67,7 @@
                                 </a>                            
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownAdministracion">
                                     <a class="dropdown-item" href="{{ route('institutional.index') }}">Institucional</a>
+                                    <a class="dropdown-item" href="{{ route('zonas.index') }}">Zonas</a>
                                 </div>
                             </li>
                            

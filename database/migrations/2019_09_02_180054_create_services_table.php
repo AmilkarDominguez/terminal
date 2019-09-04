@@ -4,24 +4,29 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuspicesTable extends Migration
+class CreateServicesTable extends Migration
 {
-
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
-        Schema::create('auspices', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
             //Custom
-            $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
-            $table->text('nombre')->nullable();
-            $table->text('descripcion')->nullable();
+            $table->text('razon_social')->nullable();
+            $table->text('servicio')->nullable();
             $table->text('direccion')->nullable();
             $table->text('telefono')->nullable();
             $table->text('web')->nullable();
+            $table->text('email')->nullable();
             $table->text('contacto')->nullable();
-            $table->text('telefono_contacto')->nullable();
-            $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
+            $table->text('logo')->nullable();
+            $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
+            $table->timestamps();
             //RELATIONS
             $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade')
@@ -36,6 +41,6 @@ class CreateAuspicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auspices');
+        Schema::dropIfExists('services');
     }
 }

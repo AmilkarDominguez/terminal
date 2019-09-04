@@ -4,17 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Presenter extends Model
+class Service extends Model
 {
     protected $fillable = [
-        'estado',
-        'nombre',
-        'descripcion',
-        'logo',
+        
+        'user_id',
+        'razon_social',
+        'servicio',
         'direccion',
         'telefono',
+        'web',
         'email',
-        'user_id'
+        'contacto',
+        'logo',
+        'estado'
+
     ];
     public function user()
     {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstitutionalsTable extends Migration
+class CreateOperationCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateInstitutionalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('institutionals', function (Blueprint $table) {
+        Schema::create('operation_cards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
             //Custom
-            $table->text('vision')->nullable();
-            $table->text('mision')->nullable();
-            $table->text('direccion')->nullable();
+            $table->text('nit')->nullable();
+            $table->text('empresa')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->date('fecha_registro')->nullable();
+            $table->date('fecha_vigencia')->nullable();
+            $table->text('responsable')->nullable();
             $table->text('telefono')->nullable();
-            $table->text('web')->nullable();
             $table->text('email')->nullable();
-            $table->text('contacto')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
             $table->timestamps();
             //RELATIONS
@@ -32,8 +33,14 @@ class CreateInstitutionalsTable extends Migration
             ->onUpdate('cascade');
         });
     }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('institutionals');
+        Schema::dropIfExists('operation_cards');
     }
 }

@@ -24,7 +24,6 @@ class InstitutionalTableSeeder extends Seeder
             'web'=> 'plustlt.tv',
             'email'=> 'plustlt.tarija@gmail.com',
             'contacto'=> 'Contacto',
-            'transmision'=> 'plustlt.tv',
             'user_id' => '1'          
         ]);
 

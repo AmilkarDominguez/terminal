@@ -1,16 +1,19 @@
 var table;
 var id=0;
 
-var title_modal_data = "Agregar Institucion";
+var title_modal_data = " Nueva Targeta de Operaciones";
 $(document).ready(function(){
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    ListDatatable();
+    dateEntry();
+    dateExpiration();
     catch_parameters();
+    ListDatatable();
 });
+
 // datatable catalogos
 function ListDatatable()
 {
@@ -24,18 +27,19 @@ function ListDatatable()
             "url": "/js/assets/Spanish.json"
         },
         ajax: {
-            url: 'institutional_dt'
+            url: 'operacion_dt'
             
         },
         columns: [
             { data: 'user.name'},
-            { data: 'mision'},
-            { data: 'vision'},
-            { data: 'direccion'},
+            { data: 'nit'},
+            { data: 'empresa'},
+            { data: 'descripcion'},
+            { data: 'fecha_registro'},
+            { data: 'fecha_vigencia'},
+            { data: 'responsable'},
             { data: 'telefono'},
-            { data: 'web'},
             { data: 'email'},
-            { data: 'contacto'},
             { data: 'estado',
             "render": function (data, type, row) {
                     if (row.estado === 'ACTIVO') {
@@ -50,7 +54,7 @@ function ListDatatable()
                 }
             },
             { data: 'Editar',   orderable: false, searchable: false },
-            { data: 'Eliminar',   orderable: false, searchable: false },
+            { data: 'Eliminar', orderable: false, searchable: false },
         ],
         buttons: [
             {
@@ -101,7 +105,7 @@ function ListDatatable()
 // guarda los datos nuevos
 function Save() {
     $.ajax({
-        url: "institutional",
+        url: "targeta_operaciones",
         method: 'post',
         data: catch_parameters(),
         success: function (result) {
@@ -120,12 +124,10 @@ function Save() {
     table.ajax.reload();
 }
 
-
-
 // captura los datos
 function Edit(id) {
     $.ajax({
-        url: "institutional/{institutional}/edit",
+        url: "targeta_operaciones/{targeta_operacione}/edit",
         method: 'get',
         data: {
             id: id
@@ -141,20 +143,20 @@ function Edit(id) {
 
     });
 };
-
 /// muestra la vista con los datos capturados
 var data_old;
 function show_data(obj) {
     ClearInputs();
     obj = JSON.parse(obj);
     id= obj.id;
-    $("#mision").val(obj.mision);
-    $("#vision").val(obj.vision);
-    $("#direccion").val(obj.direccion);
+    $("#nit").val(obj.nit);
+    $("#empresa").val(obj.empresa);
+    $("#descripcion").val(obj.descripcion);
+    $("#fecha_registro").val(obj.fecha_registro);
+    $("#fecha_vigencia").val(obj.fecha_vigencia);
+    $("#responsable").val(obj.responsable);
     $("#telefono").val(obj.telefono);
-    $("#web").val(obj.web);
     $("#email").val(obj.email);
-    $("#contacto").val(obj.contacto);
     if (obj.estado == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
     }
@@ -173,7 +175,7 @@ function Update() {
     var data_new = $(".form-data").serialize();
     if (data_old != data_new) {
         $.ajax({
-            url: "institutional/{institutional}",
+            url: "targeta_operaciones/{targeta_operacione}",
             method: 'put',
             data: catch_parameters(),
             success: function (result) {
@@ -194,6 +196,7 @@ function Update() {
     }
 }
 
+
 //funcion para eliminar valor seleccionado
 function Delete(id_) {
     id= id_;
@@ -201,14 +204,14 @@ function Delete(id_) {
 }
 $("#btn_delete").click(function () {
     $.ajax({
-        url: "institutional/{institutional}",
+        url: "targeta_operaciones/{targeta_operacione}",
         method: 'delete',
         data: {
             id: id
         },
         success: function (result) {
             if (result.success) {
-                toastr.success(result.msg,{"progressBar": true,"closeButton": true});
+                toastr.success(result.msg);
             } else {
                 toastr.warning(result.msg);
             }
@@ -222,6 +225,10 @@ $("#btn_delete").click(function () {
     table.ajax.reload();
     $('#modal_eliminar').modal('hide');
 });
+
+
+
+
 
 
 
@@ -291,3 +298,17 @@ function ClearInputs() {
     $("#form-data")[0].reset();
     id=0;
 };
+
+//fecha de entrada
+function dateEntry() {
+    $('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+}
+
+//fecha de expiracion
+function dateExpiration() {
+    $('#datetimepicker2').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+}

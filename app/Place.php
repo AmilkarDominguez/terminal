@@ -4,22 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Auspice extends Model
+class Place extends Model
 {
     protected $fillable = [
-        'estado',
+        
+        'user_id',
         'nombre',
+        'departamento',
         'descripcion',
-        'direccion',
-        'telefono',
-        'web',
-        'contacto',
-        'telefono_contacto',
-        'user_id'
+        'estado'
+
     ];
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
 }

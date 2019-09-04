@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePresentersTable extends Migration
+class CreatePlacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,19 @@ class CreatePresentersTable extends Migration
      */
     public function up()
     {
-        Schema::create('presenters', function (Blueprint $table) {
+        Schema::create('places', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
-            //Custom
-            $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
-            $table->text('nombre')->nullable();
-            $table->text('descripcion')->nullable();
-            $table->string('logo')->nullable();
-            $table->text('direccion')->nullable();
-            $table->text('telefono')->nullable();
-            $table->text('email')->nullable();
             $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
+            //Custom
+            $table->text('nombre')->nullable();
+            $table->text('departamento')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
+            $table->timestamps();
             //RELATIONS
             $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade')
-            ->onUpdate('cascade');            
+            ->onUpdate('cascade');
         });
     }
 
@@ -39,6 +36,6 @@ class CreatePresentersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presenters');
+        Schema::dropIfExists('places');
     }
 }

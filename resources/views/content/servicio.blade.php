@@ -7,9 +7,8 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2 class="card-title text-primary">Instituciones</h2>
+                        <h2 class="card-title text-primary">Servicios</h2>
                     </div>
-                    
                     <div class="col-sm-6 d-flex justify-content-end">
                         <button class="btn btn-outline-success" id="btn-agregar">
                             <i class="icon-plus"></i>&nbsp;Agregar
@@ -30,15 +29,16 @@
                 <div class="table-responsive">
                     <table id="table" class="table table-striped ">
                         <thead>
-                            <tr>
-                                <td>Registrado por</td>
-                                <td>Misión</td>
-                                <td>Visión</td>
-                                <td>Dirección</td>
-                                <td>Teléfono</td>
+                            <tr> 
+                                <td>Registrado por</td>   
+                                <td>Razon Social</td>                             
+                                <td>Servicio</td>
+                                <td>Imagen</td>
+                                <td>Direccion</td>
+                                <td>Telefono</td>
                                 <td>Web</td>
-                                <td>Correo Electrónico</td>
-                                <td>Contácto</td>
+                                <td>Email</td>
+                                <td>Contacto</td>
                                 <td>Estado</td>
                                 <td>Editar</td>
                                 <td>Eliminar</td>
@@ -68,35 +68,54 @@
                 <div class="modal-body">
                         <div class="modal-body">
                             <div class="md-form mb-3">
-                                <label><b>Misión:</b></label>
-                                <textarea  type="text" class="form-control"  rows="4" id="mision" name="mision" placeholder="Misión" required></textarea>  
+                                <label><b>Razon Social:</b></label>
+                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="razon_social" name="razon_social" placeholder="Razon Social" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
                             </div>
                             <div class="md-form mb-3">
-                                    <label><b>Visión:</b></label>
-                                    <textarea  type="text" class="form-control"  rows="4" id="vision" name="vision" placeholder="Visión" required></textarea>  
-                                    <div class="invalid-feedback">
-                                        Dato necesario.
+                                <label><b>Servicio:</b></label>
+                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="servicio" name="servicio" placeholder="Servicio" required>
+                                <div class="invalid-feedback">
+                                    Dato necesario.
+                                </div>
+                            </div>
+                            <div class="md-form mb-3">
+                                <label><b>Direccion:</b></label>
+                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="direccion" name="direccion" placeholder="Direccion" required>
+                                <div class="invalid-feedback">
+                                    Dato necesario.
+                                </div>
+                            </div>
+                            <div class="md-form mb-3">
+                                <label><b>Telefono:</b></label>
+                                <input  type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
+                                <div class="invalid-feedback">
+                                    Dato necesario.
+                                </div>
+                            </div>
+                            <div class="md-form mb-3">
+                                <label><b>Contacto:</b></label>
+                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="contacto" name="contacto" placeholder="Contacto" required>
+                                <div class="invalid-feedback">
+                                    Dato necesario.
+                                </div>
+                            </div>
+                            <div class="md-form mb-3">
+                                <label><b>Imagen:</b></label>
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <img src="" id="image" alt="logo" class="img-thumbnail">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control custom-file-input" id="logo" name="logo" lang="es" accept=".png, .jpg, .gif">
+                                            <label id="label_image" name="label_image" class="custom-file-label rounded">Elegir archivo</label>
+                                        </div>
                                     </div>
                                 </div>
-                            <div class="md-form mb-3">
-                                <label><b>Dirección:</b></label>
-                                <input type="text" class="form-control"  id="direccion" name="direccion" placeholder="Dirección"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Dato necesario.
-                                </div>
-                            </div> 
-                            <div class="md-form mb-3">
-                                <label><b>Teléfono:</b></label>
-                                <input type="text" class="form-control"  id="telefono" name="telefono" placeholder="Teléfono"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Dato necesario.
-                                </div>
-                            </div> 
+                            </div>                            
                             <div class="md-form mb-3">
                                 <label><b>Web:</b></label>
                                 <input type="text" class="form-control"  id="web" name="web" placeholder="Web"
@@ -106,21 +125,14 @@
                                 </div>
                             </div>
                             <div class="md-form mb-3">
-                                <label><b>Correo Electrónico:</b></label>
-                                <input tyoe="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Dato necesario.
+                                    <label><b>Email:</b></label>
+                                    <input type="text" class="form-control"  id="email" name="email" placeholder="Email"
+                                        required>
+                                    <div class="invalid-feedback">
+                                        Dato necesario.
+                                    </div>
                                 </div>
-                            </div> 
-                            <div class="md-form mb-3">
-                                <label><b>Contácto:</b></label>
-                                <input type="text" class="form-control"  id="contacto" name="contacto" placeholder="Contácto"
-                                    required>
-                                <div class="invalid-feedback">
-                                    Dato necesario.
-                                </div>
-                            </div>                                                                                     
+                            <div class="md-form mb-3" id="select_auspice"></div>                                                  
                             <div class="md-form mb-3">
                                     <label for="estado"><b>Estado:</b></label>
                                 <div class="custom-control custom-radio">
@@ -173,5 +185,5 @@
 <script>
     var user_id={{ Auth::user()->id }};
 </script>
-<script src="{{ URL::asset('js/scripts/institucional.js') }}"></script>
+<script src="{{ URL::asset('js/scripts/servicio.js') }}"></script>
 @endsection

@@ -15,7 +15,7 @@ class Institutional extends Model
         'web',
         'email',
         'contacto',
-        'transmision',
+        'logo',
         'user_id'
 
     ];

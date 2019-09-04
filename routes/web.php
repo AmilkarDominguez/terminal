@@ -30,18 +30,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('institutional', 'InstitutionalController')->middleware('auth');
 Route::get('institutional_dt', 'InstitutionalController@data_table')->middleware('auth');
-Route::resource('auspice', 'AuspiceController')->middleware('auth');
+
+Route::resource('zonas', 'ZonaController')->middleware('auth');
+Route::get('zona_dt', 'ZonaController@data_table')->middleware('auth');
+
+Route::resource('servicio', 'ServicioController')->middleware('auth');
+Route::get('servicio_dt', 'ServicioController@data_table')->middleware('auth');
+
+Route::resource('targeta_operaciones', 'OperationCardController')->middleware('auth');
+Route::get('operacion_dt', 'OperationCardController@data_table')->middleware('auth');
+
+/*Route::resource('auspice', 'AuspiceController')->middleware('auth');
 Route::get('auspice_dt', 'AuspiceController@data_table')->middleware('auth');
 Route::resource('presenter', 'PresenterController')->middleware('auth');
 Route::get('presenter_dt', 'PresenterController@data_table')->middleware('auth');
 Route::resource('aviso', 'AdvertisementController')->middleware('auth');
 Route::get('aviso_dt', 'AdvertisementController@data_table')->middleware('auth');
 Route::resource('programa', 'ProgramController')->middleware('auth');
-Route::get('programa_dt', 'ProgramController@data_table')->middleware('auth');
+Route::get('programa_dt', 'ProgramController@data_table')->middleware('auth');*/
 
 
-Route::get('screem_programacion', 'APPController@programacion')->name('screem_programacion');
+/*Route::get('screem_programacion', 'APPController@programacion')->name('screem_programacion');
 Route::get('screem_informacion', 'APPController@informacion')->name('screem_informacion');
-Route::get('screem_avisos', 'APPController@avisos')->name('screem_avisos');
+Route::get('screem_avisos', 'APPController@avisos')->name('screem_avisos');*/
 
 
