@@ -29,7 +29,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-danger shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Laravel

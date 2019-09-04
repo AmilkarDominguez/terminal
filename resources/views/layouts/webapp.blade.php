@@ -33,19 +33,17 @@
         <ul class="sidenav" id="mobile-demo">
             <li>
                 <div class="user-view">
-                    <div class="background orange darken-4">
+                    <div class="background red darken-4">
                         <!--<img src="/images/Presenters/3.png">-->
                     </div>
                     <a href="#user"><img class="circle" src="/images/logo.jpg"></a>
-                    <a href="#name"><span class="white-text name">PLUSTLT</span></a>
+                    <a href="#name"><span class="white-text name">Terminal</span></a>
                     <a href="#email"><span class="white-text email">Tarija</span></a>
                 </div>
             </li>
-            <li><a href="{{ route('screem_programacion') }}"><i class="orange-text text-darken-4 icon-play"></i>Programación</a></li>
+            <li><a href="{{ route('screem_institucional') }}"><i class="red-text text-darken-4 icon-info-circled"></i>Información</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="{{ route('screem_informacion') }}"><i class="orange-text text-darken-4 icon-info-circled"></i>Información</a></li>
-            <li><div class="divider"></div></li>
-            <li><a href="{{ route('screem_avisos') }}"><i class="orange-text text-darken-4 icon-megaphone"></i>Avisos</a></li>
+            <li><a href="{{ route('screem_servicios') }}"><i class="red-text text-darken-4 icon-megaphone"></i>Servicios</a></li>
         </ul>
     </header>
     <main>

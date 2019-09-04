@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 class APPController extends Controller
 {
-    public function programacion()
+    public function institucional()
     {
-        return view('app_.programacion');
+        return view('app_.institucional');
     }  
-    public function informacion()
+    public function servicios()
     {
-        return view('app_.informacion');
-    }  
-    public function avisos()
-    {
-        return view('app_.programacion');
+        return view('app_.servicios');
     }  
 }

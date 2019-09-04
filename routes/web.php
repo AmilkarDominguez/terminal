@@ -53,8 +53,7 @@ Route::resource('programa', 'ProgramController')->middleware('auth');
 Route::get('programa_dt', 'ProgramController@data_table')->middleware('auth');*/
 
 
-/*Route::get('screem_programacion', 'APPController@programacion')->name('screem_programacion');
-Route::get('screem_informacion', 'APPController@informacion')->name('screem_informacion');
-Route::get('screem_avisos', 'APPController@avisos')->name('screem_avisos');*/
+Route::get('screem_institucional', 'APPController@institucional')->name('screem_institucional');
+Route::get('screem_servicios', 'APPController@servicios')->name('screem_servicios');
 
 
