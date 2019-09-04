@@ -301,7 +301,7 @@ function SelectTarjeta() {
         method: 'get',
         success: function (result) {
             var code = '<div class="form-group">';
-            code += '<label><b>Auspicadores:</b></label>';
+            code += '<label><b>Targetas de Operacion:</b></label>';
             code += '<select class="form-control" name="operacion_id" id="operacion_id" required>';
             code += '<option disabled value="" selected>(Seleccionar)</option>';
             $.each(result, function (key, value) {
