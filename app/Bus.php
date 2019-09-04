@@ -16,4 +16,12 @@ class Bus extends Model
         'asientos',
         'estado'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function operation()
+    {
+        return $this->belongsTo(Operation_card::class);
+    }
 }

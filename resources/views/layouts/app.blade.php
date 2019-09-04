@@ -58,6 +58,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
                                     <a class="dropdown-item" href="{{ route('servicio.index') }}">Servicio</a>
                                     <a class="dropdown-item" href="{{ route('targeta_operaciones.index') }}">Targeta de Operaciones</a>
+                                    <a class="dropdown-item" href="{{ route('bus.index') }}">Buses</a>
                                 </div>
                             </li>
                            

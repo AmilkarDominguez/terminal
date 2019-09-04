@@ -22,4 +22,8 @@ class Operation_card extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function buses()
+    {
+        return $this->hasMany(Bus::class);
+    }
 }

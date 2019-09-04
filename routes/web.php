@@ -40,6 +40,9 @@ Route::get('servicio_dt', 'ServicioController@data_table')->middleware('auth');
 Route::resource('targeta_operaciones', 'OperationCardController')->middleware('auth');
 Route::get('operacion_dt', 'OperationCardController@data_table')->middleware('auth');
 
+Route::resource('bus', 'BusController')->middleware('auth');
+Route::get('bus_dt', 'BusController@data_table')->middleware('auth');
+
 /*Route::resource('auspice', 'AuspiceController')->middleware('auth');
 Route::get('auspice_dt', 'AuspiceController@data_table')->middleware('auth');
 Route::resource('presenter', 'PresenterController')->middleware('auth');
