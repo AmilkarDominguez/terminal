@@ -19,4 +19,17 @@ class Place extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function travelO()
+    {
+        return $this->belongsTo(Travel::class);
+    }
+    public function travelD()
+    {
+        return $this->belongsTo(Travel::class);
+    }
+    public function Monitoring()
+    {
+        return $this->belongsTo(Monitoring::class);
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Bus;
+use App\Operation_card;
 use App\User;
 use Yajra\DataTables\DataTables;
 use App\Http\Requests\BusRequest;

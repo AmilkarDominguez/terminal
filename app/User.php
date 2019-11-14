@@ -5,13 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
-
-
 class User extends Authenticatable
 {
-    use Notifiable,HasRolesAndPermissions;
+    use Notifiable;
 
     protected $fillable = [
         'name', 'email', 'password','state',
@@ -42,5 +38,17 @@ class User extends Authenticatable
     public function program()
     {
         return $this->hasMany(Program::class);
+    }
+    public function buses()
+    {
+        return $this->hasMany(Bus::class);
+    }
+    public function travels()
+    {
+        return $this->hasMany(Travel::class);
+    }
+    public function monitorings()
+    {
+        return $this->hasMany(Monitoring::class);
     }
 }

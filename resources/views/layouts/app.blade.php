@@ -59,6 +59,7 @@
                                     <a class="dropdown-item" href="{{ route('servicio.index') }}">Servicio</a>
                                     <a class="dropdown-item" href="{{ route('targeta_operaciones.index') }}">Targeta de Operaciones</a>
                                     <a class="dropdown-item" href="{{ route('bus.index') }}">Buses</a>
+                                    <a class="dropdown-item" href="{{ route('travel.index') }}">Recorridos</a>
                                 </div>
                             </li>
                            

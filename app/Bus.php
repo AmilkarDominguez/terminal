@@ -24,4 +24,8 @@ class Bus extends Model
     {
         return $this->belongsTo(Operation_card::class);
     }
+    public function travelB()
+    {
+        return $this->belongsTo(Travel::class);
+    }
 }

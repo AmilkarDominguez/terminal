@@ -1,7 +1,7 @@
 var table;
 var id=0;
 
-var title_modal_data = " Agregar Autobuses";
+var title_modal_data = " Agregar Recorrido";
 $(document).ready(function(){
     $.ajaxSetup({
         headers: {
@@ -11,7 +11,11 @@ $(document).ready(function(){
 
     catch_parameters();
     ListDatatable();
-    SelectTarjeta();
+    SelectBus();
+    SelectOrigen();
+    SelectLlegada();
+    dateEntry();
+    dateExpiration();
 });
 
 // datatable catalogos
@@ -27,17 +31,17 @@ function ListDatatable()
             "url": "/js/assets/Spanish.json"
         },
         ajax: {
-            url: 'bus_dt'
+            url: 'travel_dt'
             
         },
         columns: [
             { data: 'user.name'},
-            { data: 'operation.empresa'},
-            { data: 'placa'},
-            { data: 'marca'},
-            { data: 'chasis'},
-            { data: 'modelo'},
-            { data: 'asientos'},
+            { data: 'bus.marca'},
+            { data: 'origen.nombre'},
+            { data: 'destino.nombre'},
+            { data: 'detalle'},
+            { data: 'salida'},
+            { data: 'llegada'},
             { data: 'estado',
             "render": function (data, type, row) {
                     if (row.estado === 'ACTIVO') {
@@ -103,12 +107,14 @@ function ListDatatable()
 // guarda los datos nuevos
 function Save() {
     $.ajax({
-        url: "bus",
+        url: "travel",
         method: 'post',
         data: catch_parameters(),
+        
         success: function (result) {
             if (result.success) {
                 toastr.success(result.msg);
+                console.log(result);
 
             } else {
                 toastr.warning(result.msg);
@@ -125,7 +131,7 @@ function Save() {
 // captura los datos
 function Edit(id) {
     $.ajax({
-        url: "bus/{bus}/edit",
+        url: "travel/{travel}/edit",
         method: 'get',
         data: {
             id: id
@@ -147,12 +153,12 @@ function show_data(obj) {
     ClearInputs();
     obj = JSON.parse(obj);
     id= obj.id;
-    $("#operacion_id").val(obj.operacion_id);
-    $("#placa").val(obj.placa);
-    $("#marca").val(obj.marca);
-    $("#chasis").val(obj.chasis);
-    $("#modelo").val(obj.modelo);
-    $("#asientos").val(obj.asientos);
+    $("#bus_id").val(obj.bus_id);
+    $("#detalle").val(obj.detalle);
+    $("#origen_id").val(obj.origen_id);
+    $("#destino_id").val(obj.destino_id);
+    $("#llegada").val(obj.llegada);
+    $("#salida").val(obj.salida);
     if (obj.estado == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
     }
@@ -161,17 +167,17 @@ function show_data(obj) {
     }
     $("#title-modal").html("Editar Registro");
 
-    data_old = $(".form-data").serialize();
+    data_old = catch_parameters();
 
     $('#modal_datos').modal('show');
 };
 
 // actualiza los datos
 function Update() {
-    var data_new = $(".form-data").serialize();
+    var data_new = catch_parameters();
     if (data_old != data_new) {
         $.ajax({
-            url: "bus/{bus}",
+            url: "travel/{travel}",
             method: 'put',
             data: catch_parameters(),
             success: function (result) {
@@ -200,7 +206,7 @@ function Delete(id_) {
 }
 $("#btn_delete").click(function () {
     $.ajax({
-        url: "bus/{bus}",
+        url: "travel/{travel}",
         method: 'delete',
         data: {
             id: id
@@ -295,24 +301,24 @@ function ClearInputs() {
     id=0;
 };
 
-function SelectTarjeta() {
+function SelectBus() {
     $.ajax({
-        url: "/api/list_tarjeta",
+        url: "/api/list_buses",
         method: 'get',
         success: function (result) {
             var code = '<div class="form-group">';
-            code += '<label><b>Targetas de Operacion:</b></label>';
-            code += '<select class="form-control" name="operacion_id" id="operacion_id" required>';
+            code += '<label><b>Bus:</b></label>';
+            code += '<select class="form-control" name="bus_id" id="bus_id" required>';
             code += '<option disabled value="" selected>(Seleccionar)</option>';
             $.each(result, function (key, value) {
-                code += '<option value="' + value.id + '">' + value.empresa + '</option>';
+                code += '<option value="' + value.id + '">' + value.marca + '</option>';
             });
             code += '</select>';
             code += '<div class="invalid-feedback">';
             code += 'Dato necesario.';
             code += '</div>';
             code += '</div>';
-            $("#select_tarjeta_operacion").html(code);
+            $("#select_tipo").html(code);
         },
         error: function (result) {
            
@@ -320,5 +326,72 @@ function SelectTarjeta() {
             console.log(result);
         },
 
+    });
+}
+function SelectOrigen() {
+    $.ajax({
+        url: "/api/list_places",
+        method: 'get',
+        success: function (result) {
+            var code = '<div class="form-group">';
+            code += '<label><b>Origen:</b></label>';
+            code += '<select class="form-control" name="origen_id" id="origen_id" required>';
+            code += '<option disabled value="" selected>(Seleccionar)</option>';
+            $.each(result, function (key, value) {
+                code += '<option value="' + value.id + '">' + value.nombre + '</option>';
+            });
+            code += '</select>';
+            code += '<div class="invalid-feedback">';
+            code += 'Dato necesario.';
+            code += '</div>';
+            code += '</div>';
+            $("#select_origen").html(code);
+        },
+        error: function (result) {
+           
+            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            console.log(result);
+        },
+
+    });
+}
+function SelectLlegada() {
+    $.ajax({
+        url: "/api/list_places",
+        method: 'get',
+        success: function (result) {
+            var code = '<div class="form-group">';
+            code += '<label><b>Destino:</b></label>';
+            code += '<select class="form-control" name="destino_id" id="destino_id" required>';
+            code += '<option disabled value="" selected>(Seleccionar)</option>';
+            $.each(result, function (key, value) {
+                code += '<option value="' + value.id + '">' + value.nombre + '</option>';
+            });
+            code += '</select>';
+            code += '<div class="invalid-feedback">';
+            code += 'Dato necesario.';
+            code += '</div>';
+            code += '</div>';
+            $("#select_llegada").html(code);
+        },
+        error: function (result) {
+           
+            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            console.log(result);
+        },
+
+    });
+}
+//fecha de entrada
+function dateEntry() {
+    $('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+}
+
+//fecha de expiracion
+function dateExpiration() {
+    $('#datetimepicker2').datetimepicker({
+        format: 'YYYY-MM-DD'
     });
 }
