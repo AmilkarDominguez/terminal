@@ -25,7 +25,7 @@ class BusRequest extends FormRequest
     {
         return [
             'user_id'       => 'required|integer',
-            'operacion_id'  => 'required|integer',
+            'license_id'  => 'required|integer',
             'placa'         => 'required|string|max:255',
             'marca'         => 'required|string|max:255',
             'chasis'        => 'required|string|max:255',

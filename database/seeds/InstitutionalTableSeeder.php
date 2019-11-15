@@ -17,13 +17,13 @@ class InstitutionalTableSeeder extends Seeder
         //CREA EL USUARIOS
         App\Institutional::create([
             'estado'=> 'ACTIVO',
-            'mision'=> 'DESARROLLAR UNA PRODUCCIÓN, PROGRAMACIÓN Y DIFUSIÓN TELEVISIVA DE ALTA CALIDAD, REFLEJANDO LA IDENTIDAD Y LOS INTERESES DE LA SOCIEDAD TARIJEÑA.',
-            'vision'=> 'SOMOS UNA RED DE TELEVISIÓN QUE UNE MEDIANTE LA EMISIÓN TELEVISIVA AL DEPARTAMENTO DE TARIJA Y A SU VEZ LLEVA LA IMAGEN DEPARTAMENTAL AL CONJUNTO DEL PAÍS.',
+            'mision'=> 'Misión.',
+            'vision'=> 'Visión.',
             'direccion'=> 'Tarija Bolivia',
-            'telefono'=> '66-68865',
-            'web'=> 'plustlt.tv',
-            'email'=> 'plustlt.tarija@gmail.com',
-            'contacto'=> 'Contacto',
+            'telefono'=> '00000',
+            'web'=> 'www.terminal.com',
+            'email'=> 'terminal@terminal.com',
+            'contacto'=> 'terminal',
             'user_id' => '1'          
         ]);
 

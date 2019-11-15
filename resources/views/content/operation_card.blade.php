@@ -7,7 +7,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2 class="card-title text-primary">Targeta de Operaciones</h2>
+                        <h2 class="card-title text-primary">Tarjeta de Operaciones</h2>
                     </div>
                     
                     <div class="col-sm-6 d-flex justify-content-end">
@@ -70,7 +70,7 @@
                         <div class="modal-body">
                             <div class="md-form mb-3">
                                 <label><b>Nit:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" rows="4" id="nit" name="nit" placeholder="Nit" 
+                                <input  type="text" class="form-control"  rows="4" id="nit" name="nit" placeholder="Nit" 
                                 required> 
                                 <div class="invalid-feedback">
                                     Dato necesario.
@@ -78,7 +78,7 @@
                             </div>
                             <div class="md-form mb-3">
                                 <label><b>Empresa:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" rows="4" id="empresa" name="empresa" placeholder="Empresa" 
+                                <input  type="text" class="form-control"  rows="4" id="empresa" name="empresa" placeholder="Empresa" 
                                 required> 
                                 <div class="invalid-feedback">
                                     Dato necesario.
@@ -86,7 +86,7 @@
                             </div>
                             <div class="md-form mb-3">
                                 <label><b>Descripción:</b></label>
-                                <textarea type="text" class="form-control" onkeyup="Mayus(this);" id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
+                                <textarea type="text" class="form-control"  id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
@@ -113,7 +113,7 @@
 
                             <div class="md-form mb-3">
                                 <label><b>Reponsable:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" rows="4" id="responsable" name="responsable" placeholder="Responsable" 
+                                <input  type="text" class="form-control"  rows="4" id="responsable" name="responsable" placeholder="Responsable" 
                                 required> 
                                 <div class="invalid-feedback">
                                     Dato necesario.
@@ -121,7 +121,7 @@
                             </div>
                             <div class="md-form mb-3">
                                 <label><b>Telefono:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" rows="4" id="telefono" name="telefono" placeholder="Telefono" 
+                                <input  type="text" class="form-control"  rows="4" id="telefono" name="telefono" placeholder="Telefono" 
                                 required> 
                                 <div class="invalid-feedback">
                                     Dato necesario.
@@ -129,7 +129,7 @@
                             </div> 
                             <div class="md-form mb-3">
                                 <label><b>Email:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" rows="4" id="email" name="email" placeholder="Email" 
+                                <input  type="text" class="form-control"  rows="4" id="email" name="email" placeholder="Email" 
                                 required> 
                                 <div class="invalid-feedback">
                                     Dato necesario.

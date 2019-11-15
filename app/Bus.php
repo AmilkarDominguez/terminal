@@ -8,11 +8,12 @@ class Bus extends Model
 {
     protected $fillable = [
         'user_id',
-        'operacion_id',
+        'license_id',
         'placa',
         'marca',
         'chasis',
         'modelo',
+        'foto',
         'asientos',
         'estado'
     ];
@@ -20,11 +21,11 @@ class Bus extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function operation()
+    public function license()
     {
-        return $this->belongsTo(Operation_card::class);
+        return $this->belongsTo(License::class);
     }
-    public function travelB()
+    public function travel()
     {
         return $this->belongsTo(Travel::class);
     }

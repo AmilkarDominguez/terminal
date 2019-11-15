@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOperationCardsTable extends Migration
+class CreateLicensesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateOperationCardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('operation_cards', function (Blueprint $table) {
+        Schema::create('licenses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->timestamps();
             $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
             //Custom
             $table->text('nit')->nullable();
@@ -26,7 +27,6 @@ class CreateOperationCardsTable extends Migration
             $table->text('telefono')->nullable();
             $table->text('email')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
-            $table->timestamps();
             //RELATIONS
             $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade')
@@ -41,6 +41,6 @@ class CreateOperationCardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operation_cards');
+        Schema::dropIfExists('licenses');
     }
 }

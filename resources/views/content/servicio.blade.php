@@ -69,21 +69,21 @@
                         <div class="modal-body">
                             <div class="md-form mb-3">
                                 <label><b>Razon Social:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="razon_social" name="razon_social" placeholder="Razon Social" required>
+                                <input  type="text" class="form-control"  id="razon_social" name="razon_social" placeholder="Razon Social" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
                             </div>
                             <div class="md-form mb-3">
                                 <label><b>Servicio:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="servicio" name="servicio" placeholder="Servicio" required>
+                                <input  type="text" class="form-control"  id="servicio" name="servicio" placeholder="Servicio" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
                             </div>
                             <div class="md-form mb-3">
                                 <label><b>Direccion:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="direccion" name="direccion" placeholder="Direccion" required>
+                                <input  type="text" class="form-control"  id="direccion" name="direccion" placeholder="Direccion" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="md-form mb-3">
                                 <label><b>Contacto:</b></label>
-                                <input  type="text" class="form-control" onkeyup="Mayus(this);" id="contacto" name="contacto" placeholder="Contacto" required>
+                                <input  type="text" class="form-control"  id="contacto" name="contacto" placeholder="Contacto" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>

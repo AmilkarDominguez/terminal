@@ -17,6 +17,7 @@ $(document).ready(function(){
 // datatable catalogos
 function ListDatatable()
 {
+
     table = $('#table').DataTable({
         //dom: 'lfBrtip',
         dom: 'lfrtip',
@@ -32,7 +33,8 @@ function ListDatatable()
         },
         columns: [
             { data: 'user.name'},
-            { data: 'operation.empresa'},
+            { data: 'Imagen',   orderable: false, searchable: false },
+            { data: 'license.empresa'},
             { data: 'placa'},
             { data: 'marca'},
             { data: 'chasis'},
@@ -147,12 +149,14 @@ function show_data(obj) {
     ClearInputs();
     obj = JSON.parse(obj);
     id= obj.id;
-    $("#operacion_id").val(obj.operacion_id);
+    $("#license_id").val(obj.license_id);
     $("#placa").val(obj.placa);
     $("#marca").val(obj.marca);
     $("#chasis").val(obj.chasis);
     $("#modelo").val(obj.modelo);
     $("#asientos").val(obj.asientos);
+    $('#image').attr('src', obj.logo);
+    $('#label_image').html(obj.logo);
     if (obj.estado == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
     }
@@ -244,7 +248,9 @@ function catch_parameters()
     var data = $(".form-data").serialize();
     data += "&user_id="+user_id;
     data += "&id="+id;
-    //console.log(data);
+    data += "&extension_image=" + extension_image;
+    data +="&image=" + reader.result;
+    console.log(data);
     return data;
     
 }
@@ -292,17 +298,41 @@ function ClearInputs() {
     });
     //__Clean values of inputs
     $("#form-data")[0].reset();
+    $('#image').attr('src', '');
+    $('#label_image').html("Elegir archivo");
     id=0;
 };
 
+
+//Metodos para imagen
+var reader = new FileReader();
+var extension_image = "";
+$("#logo").change(function (e) {
+    ImgPreview(this);
+    $fileName = e.target.files[0].name;
+    extension_image = $fileName.replace(/^.*\./, '');
+    $('#label_image').html($fileName);
+    //console.log(extension_image);
+});
+function ImgPreview(input) {
+    if (input.files && input.files[0]) {
+        reader.onload = function (e) {
+            //console.log(e);
+            $('#image').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
 function SelectTarjeta() {
     $.ajax({
-        url: "/api/list_tarjeta",
+        url: "/api/list_licencia",
         method: 'get',
         success: function (result) {
             var code = '<div class="form-group">';
-            code += '<label><b>Targetas de Operacion:</b></label>';
-            code += '<select class="form-control" name="operacion_id" id="operacion_id" required>';
+            code += '<label><b>Tarjetas de Operacion:</b></label>';
+            code += '<select class="form-control" name="license_id" id="license_id" required>';
             code += '<option disabled value="" selected>(Seleccionar)</option>';
             $.each(result, function (key, value) {
                 code += '<option value="' + value.id + '">' + value.empresa + '</option>';

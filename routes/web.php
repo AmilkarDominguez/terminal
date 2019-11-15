@@ -13,7 +13,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 //Auth
@@ -37,8 +37,8 @@ Route::get('zona_dt', 'ZonaController@data_table')->middleware('auth');
 Route::resource('servicio', 'ServicioController')->middleware('auth');
 Route::get('servicio_dt', 'ServicioController@data_table')->middleware('auth');
 
-Route::resource('targeta_operaciones', 'OperationCardController')->middleware('auth');
-Route::get('operacion_dt', 'OperationCardController@data_table')->middleware('auth');
+Route::resource('targeta_operaciones', 'LicenseController')->middleware('auth');
+Route::get('operacion_dt', 'LicenseController@data_table')->middleware('auth');
 
 Route::resource('bus', 'BusController')->middleware('auth');
 Route::get('bus_dt', 'BusController@data_table')->middleware('auth');
