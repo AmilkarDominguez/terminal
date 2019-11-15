@@ -17,7 +17,7 @@ class InstitutionalTableSeeder extends Seeder
         //CREA EL USUARIOS
         App\Institutional::create([
             'estado'=> 'ACTIVO',
-            'mision'=> 'Misión.',
+            'mision'=> 'Mision previa.',
             'vision'=> 'Visión.',
             'direccion'=> 'Tarija Bolivia',
             'telefono'=> '00000',
