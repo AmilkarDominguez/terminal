@@ -122,6 +122,7 @@ function Save() {
         },
     });
     table.ajax.reload();
+    location.reload();
 }
 
 // captura los datos
@@ -192,6 +193,7 @@ function Update() {
             },
         });
         table.ajax.reload();
+        location.reload();
         
     }
 }
@@ -250,14 +252,14 @@ function catch_parameters()
     data += "&id="+id;
     data += "&extension_image=" + extension_image;
     data +="&image=" + reader.result;
-    console.log(data);
+    //console.log(data);
     return data;
     
 }
 
 // muestra el modal
 $("#btn-agregar").click(function () {
-    console.log("arrived");
+    //console.log("arrived");
     ClearInputs();
     $("#title-modal").html(title_modal_data);
     $("#modal_datos").modal("show");
@@ -327,7 +329,7 @@ function ImgPreview(input) {
 
 function SelectTarjeta() {
     $.ajax({
-        url: "/api/list_licencia",
+        url: "/api/licencias",
         method: 'get',
         success: function (result) {
             var code = '<div class="form-group">';

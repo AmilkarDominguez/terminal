@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Datatable 
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        Barryvdh\Cors\ServiceProvider::class,
     ],
 
     /*
