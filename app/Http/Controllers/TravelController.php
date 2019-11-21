@@ -26,7 +26,9 @@ class TravelController extends Controller
             return response()->json(['success'=>false,'msg'=>$validator->errors()->all()]);
         } 
         else{
-            Travel::create($request->all());
+            $Travel = Travel::create($request->all());
+            $Travel->code= str_random(4).$Travel->id;
+            $Travel->update($request->all());
             return response()->json(['success'=>true,'msg'=>'Registro existoso.']);
         }
     }

@@ -44,8 +44,8 @@ use Illuminate\Http\Request;
 // Route::get('list_licencia', 'API_TarjetaOperacionController@list');
 // Route::get('list_servicios', 'API_ServiciosController@list');
 
-// Route::get('list_places', 'API_PlaceController@listPlaces');
-// Route::get('list_buses', 'API_BusController@listBus');
+Route::get('list_places', 'API_PlaceController@listPlaces');
+Route::get('list_buses', 'API_BusController@listBus');
 
 
 //WEB APP

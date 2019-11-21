@@ -20,7 +20,10 @@ class CreateTravelsTable extends Migration
             $table->unsignedBigInteger('destino_id')->unsigned()->nullable();
             $table->unsignedBigInteger('bus_id')->unsigned()->nullable();
             //Custom
+            $table->text('code')->nullable();
             $table->text('detalle')->nullable();
+            $table->text('latitud')->nullable();
+            $table->text('longitud')->nullable();
             $table->date('salida')->nullable();
             $table->date('llegada')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');

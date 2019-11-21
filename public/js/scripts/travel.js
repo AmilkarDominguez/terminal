@@ -35,6 +35,8 @@ function ListDatatable()
             
         },
         columns: [
+            { data: 'id'},
+            { data: 'code'},
             { data: 'user.name'},
             { data: 'bus.marca'},
             { data: 'origen.nombre'},

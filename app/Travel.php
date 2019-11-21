@@ -8,7 +8,7 @@ class Travel extends Model
 {
     protected $fillable = [
         'user_id', 'origen_id', 'destino_id','bus_id',
-        'detalle', 'salida','llegada'
+        'detalle', 'salida','llegada', 'latitud', 'longitud','code'
     ];
     public function user()
     {

@@ -28,8 +28,6 @@ class TravelRequest extends FormRequest
             'origen_id'         => 'required|integer',
             'destino_id'        => 'required|integer',
             'bus_id'            => 'required|integer',
-            'salida'            => 'required',
-            'llegada'           => 'required',
         ];
     }
 }

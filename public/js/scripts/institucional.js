@@ -15,8 +15,8 @@ $(document).ready(function(){
 function ListDatatable()
 {
     table = $('#table').DataTable({
-        dom: 'lfBrtip',
-        //dom: 'lfrtip',
+        //dom: 'lfBrtip',
+        dom: 'lfrtip',
         processing: true,
         serverSide: true,
         "paging": true,
