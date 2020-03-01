@@ -29,7 +29,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap3.css') }}">
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Boogaloo&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Boogaloo&display=swap" rel="stylesheet"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 </head>

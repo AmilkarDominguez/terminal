@@ -3,7 +3,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   /* font-family: 'Odibee Sans', cursive !important; */
-  font-family: 'Boogaloo', cursive !important;
+  /* font-family: 'Boogaloo', cursive !important; */
 }
 
 main {

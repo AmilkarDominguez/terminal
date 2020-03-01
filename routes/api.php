@@ -59,3 +59,7 @@ Route::get('servicios', 'API\ServiciosController@list')->name('servicios');
 Route::get('buses', 'API\BusesController@list')->name('buses');
 Route::get('licencias', 'API\LicenciasController@list')->name('licencias');
 Route::get('monitoreos', 'API\MonitoreosController@list')->name('monitoreos');
+
+Route::post('start_travel', 'API\MonitoreosController@start_travel')->name('start_travel');
+Route::post('finish_travel', 'API\MonitoreosController@finish_travel')->name('finish_travel');
+Route::post('tracking_travel', 'API\MonitoreosController@tracking_travel')->name('tracking_travel');
