@@ -21,10 +21,7 @@ class CreateBrandsTable extends Migration
             $table->text('descripcion')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
             $table->timestamps();
-            //RELATIONS
-            $table->foreign('user_id')->references('id')->on('users')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+
         });
     }
 

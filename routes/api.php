@@ -47,6 +47,7 @@ use Illuminate\Http\Request;
 Route::get('list_places', 'API_PlaceController@listPlaces');
 Route::get('list_departments', 'API_PlaceController@listDepartments');
 Route::get('list_buses', 'API_BusController@listBus');
+Route::get('list_brands', 'API_BusController@listBrands');
 
 
 //WEB APP

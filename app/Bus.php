@@ -10,7 +10,7 @@ class Bus extends Model
         'user_id',
         'license_id',
         'placa',
-        'marca',
+        'brand_id',
         'chasis',
         'modelo',
         'foto',
@@ -24,6 +24,10 @@ class Bus extends Model
     public function license()
     {
         return $this->belongsTo(License::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
     public function travel()
     {

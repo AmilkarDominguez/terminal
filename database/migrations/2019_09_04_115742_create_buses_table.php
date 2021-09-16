@@ -17,9 +17,10 @@ class CreateBusesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
             $table->unsignedBigInteger('license_id')->unsigned()->nullable();//Targeta de Operacion
+            $table->unsignedBigInteger('brand_id')->unsigned()->nullable();//Marca
             //Custom
             $table->text('placa')->nullable();
-            $table->text('marca')->nullable();
+            //$table->text('marca')->nullable();
             $table->text('chasis')->nullable();
             $table->text('modelo')->nullable();
             $table->integer('asientos')->nullable();
@@ -33,7 +34,9 @@ class CreateBusesTable extends Migration
             $table->foreign('license_id')->references('id')->on('licenses')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-
+            $table->foreign('brand_id')->references('id')->on('brands')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

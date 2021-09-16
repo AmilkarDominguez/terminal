@@ -27,7 +27,7 @@ class BusRequest extends FormRequest
             'user_id'       => 'required|integer',
             'license_id'  => 'required|integer',
             'placa'         => 'required|string|max:255',
-            'marca'         => 'required|string|max:255',
+            'brand_id'         => 'required|integer',
             'chasis'        => 'required|string|max:255',
             'modelo'        => 'required|string|max:255',
             'asientos'      => 'required|integer',

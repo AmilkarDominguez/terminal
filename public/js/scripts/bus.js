@@ -12,6 +12,7 @@ $(document).ready(function(){
     catch_parameters();
     ListDatatable();
     SelectTarjeta();
+    SelectMarca();
 });
 
 // datatable catalogos
@@ -36,7 +37,7 @@ function ListDatatable()
             { data: 'Imagen',   orderable: false, searchable: false },
             { data: 'license.empresa'},
             { data: 'placa'},
-            { data: 'marca'},
+            { data: 'brand.nombre'},
             { data: 'chasis'},
             { data: 'modelo'},
             { data: 'asientos'},
@@ -152,7 +153,7 @@ function show_data(obj) {
     id= obj.id;
     $("#license_id").val(obj.license_id);
     $("#placa").val(obj.placa);
-    $("#marca").val(obj.marca);
+    $("#brand_id").val(obj.brand_id);
     $("#chasis").val(obj.chasis);
     $("#modelo").val(obj.modelo);
     $("#asientos").val(obj.asientos);
@@ -345,6 +346,34 @@ function SelectTarjeta() {
             code += '</div>';
             code += '</div>';
             $("#select_tarjeta_operacion").html(code);
+        },
+        error: function (result) {
+           
+            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            console.log(result);
+        },
+
+    });
+}
+
+function SelectMarca() {
+    $.ajax({
+        url: "/api/list_brands",
+        method: 'get',
+        success: function (result) {
+            var code = '<div class="form-group">';
+            code += '<label><b>Marca:</b></label>';
+            code += '<select class="form-control" name="brand_id" id="brand_id" required>';
+            code += '<option disabled value="" selected>(Seleccionar)</option>';
+            $.each(result, function (key, value) {
+                code += '<option value="' + value.id + '">' + value.nombre + '</option>';
+            });
+            code += '</select>';
+            code += '<div class="invalid-feedback">';
+            code += 'Dato necesario.';
+            code += '</div>';
+            code += '</div>';
+            $("#select_marca").html(code);
         },
         error: function (result) {
            

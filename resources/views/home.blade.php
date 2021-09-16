@@ -36,8 +36,8 @@
                             <div class="jumbotron p-10">
                                 <h3>Datos</h3>
                                 <hr>
-                                <p><b>Contacto : </b>{{ $item->contacto }}</p>
-                                <p><b>Dirección : </b>{{ $item->direccion }}</p>
+                                {{-- <p><b>Contacto : </b>{{ $item->contacto }}</p> --}}
+                                <p><b>Dirección : </b>{{ $item->direccion }}</p>     
                                 <p><b>Teléfono : </b>{{ $item->telefono }}</p>
                                 <p><b>Web : </b>{{ $item->web }}</p>
                             </div>

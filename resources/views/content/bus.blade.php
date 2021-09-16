@@ -88,13 +88,14 @@
                                 Dato necesario.
                             </div>
                         </div>
-                        <div class="md-form mb-3">
+                        {{-- <div class="md-form mb-3">
                             <label><b>Marca:</b></label>
                             <input type="text" class="form-control"  rows="4" id="marca" name="marca" placeholder="Marca" required>
                             <div class="invalid-feedback">
                                 Dato necesario.
                             </div>
-                        </div>
+                        </div> --}}
+                        <div class="md-form mb-3" id="select_marca"></div>
                         <div class="md-form mb-3">
                             <label><b>Chasis:</b></label>
                             <input type="text" class="form-control"  rows="4" id="chasis" name="chasis" placeholder="Chasis" required>

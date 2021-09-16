@@ -107,7 +107,7 @@ class BusController extends Controller
         $visibility = "";
         //if (!$isUser) {$visibility="disabled";}
         // return datatables()->of(Transport::where('state','!=','ELIMINADO')->with('transport_type','language')->get())
-        return datatables()->of(Bus::where('estado', '!=', 'ELIMINADO')->with('user','license')->get())
+        return datatables()->of(Bus::where('estado', '!=', 'ELIMINADO')->with('user','license','brand')->get())
         ->addColumn('Imagen', function ($item) use ($visibility) {
             $item->v=$visibility;
         return '<img src="'.$item->foto.'" alt="logo" width="125px" onclick="window.open(\''.$item->foto.'\');"></img>';
