@@ -7,14 +7,14 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2 class="card-title text-danger">Institucional</h2>
+                        <h2 class="card-title text-primary">Institucional</h2>
                     </div>
                     
-                    <div class="col-sm-6 d-flex justify-content-end">
+                    {{-- <div class="col-sm-6 d-flex justify-content-end">
                         <button class="btn btn-outline-success" id="btn-agregar">
                             <i class="icon-plus"></i>&nbsp;Agregar
                         </button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row p-2">
                     <div class="col-sm-12" id="msg-global">
@@ -37,8 +37,8 @@
                                 <td>Dirección</td>
                                 <td>Teléfono</td>
                                 <td>Web</td>
-                                <td>Correo Electrónico</td>
-                                <td>Contácto</td>
+                                {{-- <td>Correo Electrónico</td> --}}
+                                {{-- <td>Contácto</td> --}}
                                 <td>Estado</td>
                                 <td>Editar</td>
                                 <td>Eliminar</td>
@@ -105,22 +105,22 @@
                                     Dato necesario.
                                 </div>
                             </div>
-                            <div class="md-form mb-3">
+                            {{-- <div class="md-form mb-3">
                                 <label><b>Correo Electrónico:</b></label>
                                 <input tyoe="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico"
                                     required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
-                            </div> 
-                            <div class="md-form mb-3">
+                            </div>  --}}
+                            {{-- <div class="md-form mb-3">
                                 <label><b>Contácto:</b></label>
                                 <input type="text" class="form-control"  id="contacto" name="contacto" placeholder="Contácto"
                                     required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
-                            </div>                                                                                     
+                            </div>                                                                                      --}}
                             <div class="md-form mb-3">
                                     <label for="estado"><b>Estado:</b></label>
                                 <div class="custom-control custom-radio">

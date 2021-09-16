@@ -38,7 +38,7 @@
                                 <td>Telefono</td>
                                 <td>Web</td>
                                 <td>Email</td>
-                                <td>Contacto</td>
+                                {{-- <td>Contacto</td> --}}
                                 <td>Estado</td>
                                 <td>Editar</td>
                                 <td>Eliminar</td>
@@ -95,13 +95,13 @@
                                     Dato necesario.
                                 </div>
                             </div>
-                            <div class="md-form mb-3">
+                            {{-- <div class="md-form mb-3">
                                 <label><b>Contacto:</b></label>
                                 <input  type="text" class="form-control"  id="contacto" name="contacto" placeholder="Contacto" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="md-form mb-3">
                                 <label><b>Imagen:</b></label>
                                 <div class="row">

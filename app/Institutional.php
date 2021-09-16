@@ -13,8 +13,8 @@ class Institutional extends Model
         'direccion',
         'telefono',
         'web',
-        'email',
-        'contacto',
+        //'email',
+        //'contacto',
         'logo',
         'user_id'
 

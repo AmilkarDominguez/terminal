@@ -52,9 +52,9 @@ function ListDatatable() {
             {
                 data: 'email'
             },
-            {
-                data: 'contacto'
-            },
+            // {
+            //     data: 'contacto'
+            // },
             {
                 data: 'estado',
                 "render": function (data, type, row) {
@@ -142,7 +142,7 @@ function Save() {
             toastr.error("CONTACTE A SU PROVEEDOR POR FAVOR.");
         },
     });
-    location.reload();
+    //location.reload();
 }
 
 
@@ -179,7 +179,7 @@ function show_data(obj) {
     $("#servicio").val(obj.servicio);
     $("#direccion").val(obj.direccion);
     $("#telefono").val(obj.telefono);
-    $("#contacto").val(obj.contacto);
+    // $("#contacto").val(obj.contacto);
     $('#image').attr('src', obj.logo);
     $('#label_image').html(obj.logo);
     $("#web").val(obj.web);
@@ -221,7 +221,7 @@ function Update() {
         });
 
     }
-    location.reload();
+    //location.reload();
 }
 
 //funcion para eliminar valor seleccionado

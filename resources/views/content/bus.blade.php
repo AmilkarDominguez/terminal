@@ -111,7 +111,7 @@
                         </div>
                         <div class="md-form mb-3">
                             <label><b>Asientos:</b></label>
-                            <input type="text" class="form-control"  rows="4" id="asientos" name="asientos" placeholder="Asientos" required>
+                            <input type="number" class="form-control"  rows="4" id="asientos" name="asientos" placeholder="Asientos" required>
                             <div class="invalid-feedback">
                                 Dato necesario.
                             </div>

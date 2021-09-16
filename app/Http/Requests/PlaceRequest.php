@@ -26,7 +26,7 @@ class PlaceRequest extends FormRequest
         return [
             'user_id'                   => 'required|integer',
             'nombre'                    => 'required|string|max:255',
-            'departamento'              => 'required|string|max:255',
+            // 'departamento'              => 'required|string|max:255',
             'descripcion'               => 'required|string|max:255',
             'estado'                    => 'required|string|max:255',    
             ];

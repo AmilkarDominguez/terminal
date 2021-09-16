@@ -23,7 +23,7 @@ class CreateServicesTable extends Migration
             $table->text('telefono')->nullable();
             $table->text('web')->nullable();
             $table->text('email')->nullable();
-            $table->text('contacto')->nullable();
+            //$table->text('contacto')->nullable();
             $table->text('logo')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
             $table->timestamps();

@@ -7,7 +7,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2 class="card-title text-danger">Zonas</h2>
+                        <h2 class="card-title text-primary">Zonas</h2>
                     </div>
                     
                     <div class="col-sm-6 d-flex justify-content-end">
@@ -71,7 +71,7 @@
                                     Dato necesario.
                                 </div>
                             </div>
-                            <div class="md-form mb-3">
+                            {{-- <div class="md-form mb-3">
                                 <label for="departamento"><b>Departamento:</b></label>
                                 <select class="form-control" name="departamento" id="departamento" required>
                                     <option selected>SELECCIONE UN VALOR POR FAVOR.</option>
@@ -88,7 +88,8 @@
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>
-                            </div>
+                            </div> --}}
+                            <div class="md-form mb-3" id="select_departamento"></div>
                             <div class="md-form mb-3">
                                 <label><b>Descripción:</b></label>
                                 <textarea type="text" class="form-control"  id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>

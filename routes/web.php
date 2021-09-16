@@ -22,7 +22,7 @@ Auth::routes();
 ///USERS///////
 
 Route::get('/users', 'UserController@user')->name('user')->middleware('auth');
-Route::resource('user', 'UserController')->except(['create','show']);
+Route::resource('user', 'UserController')->except(['create', 'show']);
 Route::get('listuser', 'UserController@list')->name('listuser')->middleware('auth');
 
 //HOME
@@ -31,8 +31,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('institutional', 'InstitutionalController')->middleware('auth');
 Route::get('institutional_dt', 'InstitutionalController@data_table')->middleware('auth');
 
+Route::resource('users', 'UserController')->middleware('auth');
+Route::get('users_dt', 'UserController@data_table')->middleware('auth');
+
 Route::resource('zonas', 'ZonaController')->middleware('auth');
 Route::get('zona_dt', 'ZonaController@data_table')->middleware('auth');
+
+Route::resource('departamentos', 'DepartamentoController')->middleware('auth');
+Route::get('departamento_dt', 'DepartamentoController@data_table')->middleware('auth');
+
+Route::resource('marcas', 'MarcaController')->middleware('auth');
+Route::get('marca_dt', 'MarcaController@data_table')->middleware('auth');
 
 Route::resource('servicio', 'ServicioController')->middleware('auth');
 Route::get('servicio_dt', 'ServicioController@data_table')->middleware('auth');
@@ -58,5 +67,3 @@ Route::get('programa_dt', 'ProgramController@data_table')->middleware('auth');*/
 
 Route::get('screem_institucional', 'APPController@institucional')->name('screem_institucional');
 Route::get('screem_servicios', 'APPController@servicios')->name('screem_servicios');
-
-

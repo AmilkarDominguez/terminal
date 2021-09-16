@@ -15,7 +15,7 @@ class Service extends Model
         'telefono',
         'web',
         'email',
-        'contacto',
+        //'contacto',
         'logo',
         'estado'
 

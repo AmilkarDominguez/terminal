@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Travel extends Model
 {
     protected $fillable = [
-        'user_id', 'origen_id', 'destino_id','bus_id',
-        'detalle', 'salida','llegada', 'latitud', 'longitud','code'
+        'user_id', 'origen_id', 'destino_id', 'bus_id',
+        'detalle', 'salida', 'llegada', 'latitud', 'longitud', 'code', 'estado'
     ];
     public function user()
     {

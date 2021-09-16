@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Place;
+use App\Department;
 use Yajra\DataTables\DataTables;
 use App\Http\Requests\PlaceRequest;
 use Validator;
@@ -61,7 +62,8 @@ class ZonaController extends Controller
         //Variable para la visiblidad
         $visibility = "";
         //if (!$isUser) {$visibility="disabled";}
-            return datatables()->of(Place::where('estado','!=','ELIMINADO')->with('user')->get())
+       
+            return datatables()->of(Place::where('estado','!=','ELIMINADO')->with('user', 'department')->get())
             ->addColumn('Editar', function ($item) use ($visibility) {
                 $item->v=$visibility;
             return '<a class="btn btn-xs btn-primary text-white '.$item->v.'" onclick="Edit('.$item->id.')" ><i class="icon-pencil"></i></a>';

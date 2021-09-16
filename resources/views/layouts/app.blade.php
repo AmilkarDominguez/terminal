@@ -26,7 +26,7 @@
     <!-- Tempusdominus DateTime Picker-->
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap3.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet"> -->
     {{-- <link href="https://fonts.googleapis.com/css?family=Boogaloo&display=swap" rel="stylesheet"> --}}
@@ -37,12 +37,16 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-danger shadow-sm">
+
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     SRBGI
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -59,52 +63,66 @@
                     <ul class="navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
                         @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReportes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-th-list"></i>Contenido
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
-                                <a class="dropdown-item" href="{{ route('servicio.index') }}">Servicios</a>
-                                <a class="dropdown-item" href="{{ route('targeta_operaciones.index') }}">Tarjetas de operaciones</a>
-                                <a class="dropdown-item" href="{{ route('bus.index') }}">Buses</a>
-                                <a class="dropdown-item" href="{{ route('travel.index') }}">Recorridos</a>
-                            </div>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReportes" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-th-list"></i>Contenido
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownReportes">
+                                    <a class="dropdown-item" href="{{ route('servicio.index') }}">Servicios</a>
+                                    <a class="dropdown-item" href="{{ route('targeta_operaciones.index') }}">Tarjetas de
+                                        operaciones</a>
+                                    <a class="dropdown-item" href="{{ route('marcas.index') }}">Marcas</a>
+                                    <a class="dropdown-item" href="{{ route('bus.index') }}">Buses</a>
+                                    <a class="dropdown-item" href="{{ route('travel.index') }}">Recorridos</a>
+                                </div>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdministracion" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-cog"></i>Configuración
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownAdministracion">
-                                <a class="dropdown-item" href="{{ route('institutional.index') }}">Institucional</a>
-                                <a class="dropdown-item" href="{{ route('zonas.index') }}">Zonas</a>
-                            </div>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdministracion" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-cog"></i>Configuración
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownAdministracion">
+                                    <a class="dropdown-item" href="{{ route('institutional.index') }}">Institucional</a>
+                                    <a class="dropdown-item" href="{{ route('zonas.index') }}">Zonas</a>
+                                    <a class="dropdown-item" href="{{ route('departamentos.index') }}">Departamentos</a>
+                              
+                                    @if (Auth::user()->hasRole('super_admin'))
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">Usuarios</a>
+                                    @endif
+
+
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         @guest
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <!--<a class="dropdown-item" href="!#">Cambiar contraseña</a>-->
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Salir') }}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <!--<a class="dropdown-item" href="!#">Cambiar contraseña</a>-->
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                         document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>

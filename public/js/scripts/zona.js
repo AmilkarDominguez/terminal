@@ -9,6 +9,7 @@ $(document).ready(function(){
         }
     });
     //ListDatatable();
+    SelectDepartamento();
     catch_parameters();
     ListDatatable();
 });
@@ -32,7 +33,7 @@ function ListDatatable()
         columns: [
             { data: 'user.name'},
             { data: 'nombre'},
-            { data: 'departamento'},
+            { data: 'department.nombre'},
             { data: 'descripcion'},
             { data: 'estado',
             "render": function (data, type, row) {
@@ -146,6 +147,8 @@ function show_data(obj) {
     $("#nombre").val(obj.nombre);
     $("#departamento").val(obj.departamento);
     $("#descripcion").val(obj.descripcion);
+    $("#department_id").val(obj.department_id);
+    
     if (obj.estado == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
     }
@@ -287,3 +290,31 @@ function ClearInputs() {
     $("#form-data")[0].reset();
     id=0;
 };
+
+function SelectDepartamento() {
+    $.ajax({
+        url: "/api/list_departments",
+        method: 'get',
+        success: function (result) {
+            var code = '<div class="form-group">';
+            code += '<label><b>Departamento:</b></label>';
+            code += '<select class="form-control" name="department_id" id="department_id" required>';
+            code += '<option disabled value="" selected>(Seleccionar)</option>';
+            $.each(result, function (key, value) {
+                code += '<option value="' + value.id + '">' + value.nombre + '</option>';
+            });
+            code += '</select>';
+            code += '<div class="invalid-feedback">';
+            code += 'Dato necesario.';
+            code += '</div>';
+            code += '</div>';
+            $("#select_departamento").html(code);
+        },
+        error: function (result) {
+           
+            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            console.log(result);
+        },
+
+    });
+}

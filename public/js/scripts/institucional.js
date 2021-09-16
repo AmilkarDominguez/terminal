@@ -34,8 +34,8 @@ function ListDatatable()
             { data: 'direccion'},
             { data: 'telefono'},
             { data: 'web'},
-            { data: 'email'},
-            { data: 'contacto'},
+            // { data: 'email'},
+            // { data: 'contacto'},
             { data: 'estado',
             "render": function (data, type, row) {
                     if (row.estado === 'ACTIVO') {
@@ -153,8 +153,8 @@ function show_data(obj) {
     $("#direccion").val(obj.direccion);
     $("#telefono").val(obj.telefono);
     $("#web").val(obj.web);
-    $("#email").val(obj.email);
-    $("#contacto").val(obj.contacto);
+    // $("#email").val(obj.email);
+    // $("#contacto").val(obj.contacto);
     if (obj.estado == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
     }

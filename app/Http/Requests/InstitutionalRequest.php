@@ -31,8 +31,8 @@ class InstitutionalRequest extends FormRequest
         'direccion'                 => 'required|string|max:255',
         'telefono'                  => 'required|string|max:255',
         'web'                       => 'required|string|max:255',
-        'email'                     => 'required|string|max:255',
-        'contacto'                  => 'required|string|max:255',
+        //'email'                     => 'required|string|max:255',
+        //'contacto'                  => 'required|string|max:255',
         'user_id'                   => 'required|integer',
         ];
     }

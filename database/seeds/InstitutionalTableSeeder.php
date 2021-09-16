@@ -22,11 +22,9 @@ class InstitutionalTableSeeder extends Seeder
             'direccion'=> 'Tarija Bolivia',
             'telefono'=> '00000',
             'web'=> 'www.terminal.com',
-            'email'=> 'terminal@terminal.com',
-            'contacto'=> 'terminal',
+            // 'email'=> 'terminal@terminal.com',
+            // 'contacto'=> 'terminal',
             'user_id' => '1'          
         ]);
-
-
     }
 }

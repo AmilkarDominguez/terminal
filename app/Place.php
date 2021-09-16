@@ -10,14 +10,20 @@ class Place extends Model
         
         'user_id',
         'nombre',
-        'departamento',
+        // 'departamento',
         'descripcion',
-        'estado'
+        'estado',
+        'department_id'
+        
 
     ];
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
     public function travelO()
     {

@@ -122,7 +122,7 @@ function Save() {
         },
     });
     table.ajax.reload();
-    location.reload();
+    //location.reload();
 }
 
 // captura los datos
@@ -193,7 +193,7 @@ function Update() {
             },
         });
         table.ajax.reload();
-        location.reload();
+        //location.reload();
         
     }
 }

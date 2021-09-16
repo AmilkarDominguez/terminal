@@ -22,7 +22,7 @@ class CreateBusesTable extends Migration
             $table->text('marca')->nullable();
             $table->text('chasis')->nullable();
             $table->text('modelo')->nullable();
-            $table->text('asientos')->nullable();
+            $table->integer('asientos')->nullable();
             $table->text('foto')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
             $table->timestamps();

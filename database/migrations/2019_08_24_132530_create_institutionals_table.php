@@ -22,8 +22,8 @@ class CreateInstitutionalsTable extends Migration
             $table->text('direccion')->nullable();
             $table->text('telefono')->nullable();
             $table->text('web')->nullable();
-            $table->text('email')->nullable();
-            $table->text('contacto')->nullable();
+            //$table->text('email')->nullable();
+            //$table->text('contacto')->nullable();
             $table->enum('estado', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
             $table->timestamps();
             //RELATIONS

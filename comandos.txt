@@ -1,0 +1,10 @@
+php artisan serve
+
+abrir cmd en la ubicacion de ngrok
+ngrok http 8000
+
+
+
+//Comando para ver si el comando para inactivar viaje esta activo
+
+php artisan schedule:run
