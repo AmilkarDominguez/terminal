@@ -38,7 +38,7 @@ function ListDatatable()
             { data: 'id'},
             { data: 'code'},
             { data: 'user.name'},
-            { data: 'bus.marca'},
+            { data: 'bus.placa'},
             { data: 'origen.nombre'},
             { data: 'destino.nombre'},
             { data: 'detalle'},
@@ -313,7 +313,7 @@ function SelectBus() {
             code += '<select class="form-control" name="bus_id" id="bus_id" required>';
             code += '<option disabled value="" selected>(Seleccionar)</option>';
             $.each(result, function (key, value) {
-                code += '<option value="' + value.id + '">' + value.marca + '</option>';
+                code += '<option value="' + value.id + '">' + value.placa + '</option>';
             });
             code += '</select>';
             code += '<div class="invalid-feedback">';

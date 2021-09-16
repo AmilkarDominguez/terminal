@@ -12,7 +12,7 @@ class BusesController extends Controller
 {
     public function list()
     {
-        return Bus::where('estado','ACTIVO')->with('user','license')->get();
+        return Bus::where('estado','ACTIVO')->with('user','license','brand')->get();
     }
     public function list_JSON()
     {
