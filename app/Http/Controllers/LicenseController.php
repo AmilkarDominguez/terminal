@@ -37,8 +37,21 @@ class LicenseController extends Controller
     }
     public function update(Request $request)
     {
-        $rule = new LicenseRequest();
-        $validator = Validator::make($request->all(), $rule->rules());
+        //$rule = new LicenseRequest();
+        //return response()->json(['success' => false, 'msg' => $request->empresa]);
+        $validator = Validator::make($request->all(), 
+        [
+            'user_id'           => 'required|integer',
+            'nit'               => 'required|string|max:255',
+            'empresa'           => 'required|string|max:255|unique:licenses,empresa,'.$request->id,
+            'descripcion'       => 'required|string|max:255',
+            'fecha_registro'    => 'required',
+            'fecha_vigencia'    => 'required',
+            'responsable'       => 'required|string|max:255',
+            'telefono'          => 'required|string|max:255',
+            'email'             => 'required|string|max:255',
+            'estado'            => 'required|string|max:255',
+        ]);
         if ($validator->fails()) {
             return response()->json(['success' => false, 'msg' => $validator->errors()->all()]);
         } else {

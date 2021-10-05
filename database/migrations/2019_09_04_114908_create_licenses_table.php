@@ -19,7 +19,7 @@ class CreateLicensesTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned()->nullable();//Usuario
             //Custom
             $table->text('nit')->nullable();
-            $table->text('empresa')->nullable();
+            $table->text('empresa')->inique()->nullable();
             $table->text('descripcion')->nullable();
             $table->date('fecha_registro')->nullable();
             $table->date('fecha_vigencia')->nullable();

@@ -36,8 +36,8 @@ class MonitoreosController extends Controller
     }
     public function tracking_travel(Request $request)
     {
-        $Travel = Travel::where('estado', 'ACTIVO')->where('code', $request->code)->with('bus', 'origen', 'destino')->first();
-
+        //$Travel = Travel::where('estado', 'ACTIVO')->where('code', $request->code)->with('bus', 'origen', 'destino')->first();
+        $Travel = Travel::where('code', $request->code)->with('bus', 'origen', 'destino')->first();
         if ($Travel) {
             $Travel->empresa = License::find($Travel->bus->license_id);
 
