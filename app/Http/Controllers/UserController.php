@@ -35,6 +35,7 @@ class UserController extends Controller
         } else {
             $user = User::create([
                 'name' => $request->name,
+                'last_name' => $request->last_name,                
                 'email' => $request->email,
                 'state' => $request->state,
                 'email_verified_at' => now(),
@@ -60,6 +61,7 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'     => 'required|string|max:255',
+            'last_name'     => 'required|string|max:255',            
             'email'  => 'string|email|max:255',
             'email' => ['required', Rule::unique('users')->ignore($request->id),],
             'state'    => 'required|string',
@@ -71,6 +73,7 @@ class UserController extends Controller
             $User = User::find($request->id);
             $User->update([
                 'name' => $request->name,
+                'last_name' => $request->last_name,
                 'email' => $request->email,
                 'state' => $request->state,
                 'email_verified_at' => now(),

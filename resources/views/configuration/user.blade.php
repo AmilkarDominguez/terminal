@@ -32,6 +32,7 @@
                             <thead>
                                 <tr>
                                     <td>Nombre</td>
+                                    <td>Apellido</td>
                                     <td>Correo</td>
                                     <td>Estado</td>
                                     <td>Editar</td>
@@ -67,6 +68,13 @@
                             <div class="md-form mb-3">
                                 <label><b>Nombre:</b></label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required>
+                                <div class="invalid-feedback">
+                                    Dato necesario.
+                                </div>
+                            </div>
+                            <div class="md-form mb-3">
+                                <label><b>Apellido:</b></label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Apellido" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
                                 </div>

@@ -30,6 +30,7 @@ function ListDatatable() {
         },
         columns: [
             { data: 'name' },
+            { data: 'last_name' },
             { data: 'email' },
             {
                 data: 'state',
@@ -145,7 +146,10 @@ function show_data(obj) {
     console.log(obj);
 
     $("#name").val(obj.name);
+    $("#last_name").val(obj.last_name);
+    
     $("#email").val(obj.email);
+    
     $("#password").val(obj.password);
     if (obj.state == "ACTIVO") {
         $('#state_activo').prop('checked', true);
