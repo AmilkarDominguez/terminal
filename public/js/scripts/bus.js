@@ -1,8 +1,8 @@
 var table;
-var id=0;
+var id = 0;
 
 var title_modal_data = " Agregar Autobuses";
-$(document).ready(function(){
+$(document).ready(function () {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -16,12 +16,11 @@ $(document).ready(function(){
 });
 
 // datatable catalogos
-function ListDatatable()
-{
+function ListDatatable() {
 
     table = $('#table').DataTable({
-        //dom: 'lfBrtip',
-        dom: 'lfrtip',
+        dom: 'lfBrtip',
+        //dom: 'lfrtip',
         processing: true,
         serverSide: true,
         "paging": true,
@@ -30,31 +29,32 @@ function ListDatatable()
         },
         ajax: {
             url: 'bus_dt'
-            
+
         },
         columns: [
-            { data: 'user.name'},
-            { data: 'Imagen',   orderable: false, searchable: false },
-            { data: 'license.empresa'},
-            { data: 'placa'},
-            { data: 'brand.nombre'},
-            { data: 'chasis'},
-            { data: 'modelo'},
-            { data: 'asientos'},
-            { data: 'estado',
-            "render": function (data, type, row) {
+            { data: 'user.name' },
+            { data: 'Imagen', orderable: false, searchable: false },
+            { data: 'license.empresa' },
+            { data: 'placa' },
+            { data: 'brand.nombre' },
+            { data: 'chasis' },
+            { data: 'modelo' },
+            { data: 'asientos' },
+            {
+                data: 'estado',
+                "render": function (data, type, row) {
                     if (row.estado === 'ACTIVO') {
                         return '<center><p class="bg-success text-white"><b>ACTIVO</b></p></center>';
                     }
-                    else if (row.estado === 'INACTIVO') {          
+                    else if (row.estado === 'INACTIVO') {
                         return '<center><p class="bg-warning text-white"><b>INACTIVO</b></p></center>';
                     }
-                    else if (row.estado === 'ELIMINADO') {          
+                    else if (row.estado === 'ELIMINADO') {
                         return '<center><p class="bg-danger text-white"><b>ELIMINADO</b></p></center>';
                     }
                 }
             },
-            { data: 'Editar',   orderable: false, searchable: false },
+            { data: 'Editar', orderable: false, searchable: false },
             { data: 'Eliminar', orderable: false, searchable: false },
         ],
         buttons: [
@@ -70,7 +70,7 @@ function ListDatatable()
                 titleAttr: 'Excel',
                 extend: 'excel',
                 exportOptions: {
-                    columns: [0, 1, 2]
+                    columns: [0, 2, 3, 4, 5, 6, 7, 8]
                 }
             },
             {
@@ -79,7 +79,7 @@ function ListDatatable()
                 titleAttr: 'PDF',
                 extend: 'pdf',
                 exportOptions: {
-                    columns: [0, 1, 2]
+                    columns: [0, 2, 3, 4, 5, 6, 7, 8]
                 }
             },
             {
@@ -88,7 +88,7 @@ function ListDatatable()
                 titleAttr: 'Imprimir',
                 extend: 'print',
                 exportOptions: {
-                    columns: [0, 1, 2]
+                    columns: [0, 2, 3, 4, 5, 6, 7, 8]
                 }
             },
             //btn Refresh
@@ -150,7 +150,7 @@ var data_old;
 function show_data(obj) {
     ClearInputs();
     obj = JSON.parse(obj);
-    id= obj.id;
+    id = obj.id;
     $("#license_id").val(obj.license_id);
     $("#placa").val(obj.placa);
     $("#brand_id").val(obj.brand_id);
@@ -175,7 +175,7 @@ function show_data(obj) {
 // actualiza los datos
 function Update() {
     var data_new = $(".form-data").serialize();
-    if (data_old != data_new) {
+    if (true) {
         $.ajax({
             url: "bus/{bus}",
             method: 'put',
@@ -183,7 +183,7 @@ function Update() {
             success: function (result) {
                 if (result.success) {
                     toastr.success(result.msg);
-    
+
                 } else {
                     toastr.warning(result.msg);
                 }
@@ -195,14 +195,14 @@ function Update() {
         });
         table.ajax.reload();
         //location.reload();
-        
+
     }
 }
 
 
 //funcion para eliminar valor seleccionado
 function Delete(id_) {
-    id= id_;
+    id = id_;
     $('#modal_eliminar').modal('show');
 }
 $("#btn_delete").click(function () {
@@ -220,7 +220,7 @@ $("#btn_delete").click(function () {
             }
         },
         error: function (result) {
-            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            toastr.error(result.msg + ' CONTACTE A SU PROVEEDOR POR FAVOR.');
             console.log(result);
         },
 
@@ -246,16 +246,15 @@ function Mayus(e) {
 }
 
 // obtiene los datos del formulario
-function catch_parameters()
-{
+function catch_parameters() {
     var data = $(".form-data").serialize();
-    data += "&user_id="+user_id;
-    data += "&id="+id;
+    data += "&user_id=" + user_id;
+    data += "&id=" + id;
     data += "&extension_image=" + extension_image;
-    data +="&image=" + reader.result;
+    data += "&image=" + reader.result;
     //console.log(data);
     return data;
-    
+
 }
 
 // muestra el modal
@@ -303,7 +302,7 @@ function ClearInputs() {
     $("#form-data")[0].reset();
     $('#image').attr('src', '');
     $('#label_image').html("Elegir archivo");
-    id=0;
+    id = 0;
 };
 
 
@@ -348,8 +347,8 @@ function SelectTarjeta() {
             $("#select_tarjeta_operacion").html(code);
         },
         error: function (result) {
-           
-            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+
+            toastr.error(result.msg + ' CONTACTE A SU PROVEEDOR POR FAVOR.');
             console.log(result);
         },
 
@@ -376,8 +375,8 @@ function SelectMarca() {
             $("#select_marca").html(code);
         },
         error: function (result) {
-           
-            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+
+            toastr.error(result.msg + ' CONTACTE A SU PROVEEDOR POR FAVOR.');
             console.log(result);
         },
 
